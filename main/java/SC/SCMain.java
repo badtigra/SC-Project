@@ -4,7 +4,7 @@
  * @author Gregory Ross McTaggart
  * @version June 4, 2024
  */
-package ch07;
+package SC;
 
 import java.util.Scanner;
 
