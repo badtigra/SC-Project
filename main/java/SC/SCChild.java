@@ -9,25 +9,77 @@ package SC;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.io.*;
 
-public class SCConstructor {
+public class SCChild {
 
-    // Can remove constant state to allow further customization 
-    public static final int NUM_ROWS = 4;
-    public static final int NUM_COLUMNS = 6;
+    public int numRows;
+    public int numColumns;
 
-    String[][] names = new String[NUM_ROWS][NUM_COLUMNS]; // Stores name location
     ArrayList<String> storedNames = new ArrayList<String>(); // Stores names for input into chart
+    String[][] names;
 
     /**
-     * SeatChart - Initialize all seats to "________" (8 wide)
-     *
-     * @return void
+     * SCChild - Default constructor, no parameters Chance to initialize any or
+     * all of the instance variables
      */
-    public SCConstructor() {
+    public SCChild() {
+        numRows = 0;
+        numColumns = 0;
+    }
+
+    /**
+     * SCCild - Constructor to initialize all seats to "________" (8 wide)
+     * Initialize 2D Array
+     *
+     * @param inputRows - set rows from SCMain
+     * @param inputColumns - set columns from SCMain
+     */
+    public SCChild(int inputRows, int inputColumns) {
+        this.numRows = inputRows;
+        this.numColumns = inputColumns;
+        names = new String[numRows][numColumns];
         for (String[] underscore : names) {
             Arrays.fill(underscore, "________");
         }
+    }
+
+    /**
+     * getRows - Return the current value of numRows
+     *
+     * @return numRows
+     */
+    public int getRows() {
+        return numRows;
+    }
+
+    /**
+     * setRows - Update the current value of numRows
+     *
+     * @param inputRows new value
+     * @return void;
+     */
+    public void setRows(int inputRows) {
+        this.numRows = inputRows;
+    }
+
+    /**
+     * getColumns - Return the current value of numColumns
+     *
+     * @return numColumns
+     */
+    public int getColumns() {
+        return numColumns;
+    }
+
+    /**
+     * setColumns - Update the current value of numColumns
+     *
+     * @param inputColumns new value
+     * @return void
+     */
+    public void setColumns(int inputColumns) {
+        this.numColumns = inputColumns;
     }
 
     /**
@@ -38,7 +90,7 @@ public class SCConstructor {
     public void printSeatingChart() {
         for (String[] person : names) {
             for (String name : person) {
-                // System.out.printf("%10s ", name);
+                //System.out.printf("%10s ", name);
                 System.out.printf("%s\t", name);
             }
             System.out.println();
@@ -119,7 +171,6 @@ public class SCConstructor {
                 } else {
                     System.out.printf("%s%n", n);
                 }
-                // System.out.printf("%s%n", n.replaceAll("________", "").strip()); // Figure out how to remove whitespace
             }
         }
     }
