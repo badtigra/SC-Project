@@ -2,7 +2,7 @@
  * Used to keep track of assigned and unassigned seats
  *
  * @author Gregory Ross McTaggart
- * @version June 4, 2024
+ * @version June 11, 2024
  */
 package SC;
 
@@ -17,7 +17,7 @@ public class SCChild {
     public int numColumns;
 
     ArrayList<String> storedNames = new ArrayList<String>(); // Stores names for input into chart
-    String[][] names;
+    String[][] names; // Array for storing name location
 
     /**
      * SCChild - Default constructor, no parameters Chance to initialize any or
