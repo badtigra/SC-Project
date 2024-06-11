@@ -48,10 +48,8 @@ public class SCMain {
             sc.addPerson(row, column, name);
 
             System.out.print("Name? ");
-            // name = input.next();
 
-            // Saved for full names later on
-            input.nextLine(); // Required to keep next line from skipping, why?
+            input.nextLine(); 
             name = input.nextLine();
 
             System.out.println();
