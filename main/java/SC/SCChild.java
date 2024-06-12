@@ -9,7 +9,6 @@ package SC;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.io.*;
 
 public class SCChild {
 
@@ -165,11 +164,11 @@ public class SCChild {
     public void printNamesNumeric() {
         System.out.printf("%n--In Numerical--%n");
         for (String[] w : names) {
-            for (String n : w) {
-                if (n.equals("________")) {
+            for (String name : w) {
+                if (name.equals("________")) {
                     continue;
                 } else {
-                    System.out.printf("%s%n", n);
+                    System.out.printf("%s%n", name);
                 }
             }
         }
