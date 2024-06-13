@@ -2,7 +2,7 @@
  * Used to keep track of assigned and unassigned seats
  *
  * @author Gregory Ross McTaggart
- * @version June 11, 2024
+ * @version June 12, 2024
  */
 package SC;
 
