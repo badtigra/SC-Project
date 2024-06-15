@@ -8,6 +8,11 @@ package SC;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class SCMain {
 
@@ -71,7 +76,7 @@ public class SCMain {
                             sc.addPerson(row, column, name);
 
                             System.out.print("Name? ");
-                            
+
                             input.nextLine(); // To clear the input buffer 
                             name = input.nextLine();
 
@@ -112,5 +117,43 @@ public class SCMain {
             }
         } while (!validData);
         input.close();
+        
+        /**
+         * SQL Block 
+         * 
+         * Establishes localhost connection to MySQL Database created in 
+         * MySQL Workbench 8.0
+         */
+        Connection connection = null;
+        String url = "jdbc:mysql://localhost:3306/javadb";
+        String user = "User";
+        String password = "P@ssw0rd";
+
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+
+            Statement statement;
+            statement = connection.createStatement();
+            ResultSet resultSet;
+            resultSet = statement.executeQuery(
+                    "select * from designation");
+            int code;
+            String title;
+            // Arguments must be exact to javadb
+            while (resultSet.next()) {
+                code = resultSet.getInt("code");
+                title = resultSet.getString("title").trim();
+                System.out.printf("%nCode : %s Title : %s", code, title);
+            }
+
+            resultSet.close();
+            statement.close();
+
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+
     }
 }
