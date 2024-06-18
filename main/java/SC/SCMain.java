@@ -1,8 +1,8 @@
 /**
  * Program to make a seating chart and add names
  *
- * @author Gregory Ross McTaggart
- * @version June 13, 2024
+ * @author GRM
+ * @version June 18, 2024
  */
 package SC;
 
@@ -32,6 +32,7 @@ public class SCMain {
         int numColumns;
         boolean validData = false;
         boolean notZero = false;
+        //javadb db = new javadb();
 
         // Introduces program's placeholder name
         System.out.printf("Welcome to Express Seat Charter%n%n");
@@ -117,12 +118,12 @@ public class SCMain {
             }
         } while (!validData);
         input.close();
-        
+
         /**
-         * SQL Block 
-         * 
-         * Establishes localhost connection to MySQL Database created in 
-         * MySQL Workbench 8.0
+         * SQL Section
+         *
+         * Establishes localhost connection to MySQL Database created in MySQL
+         * Workbench 8.0
          */
         Connection connection = null;
         String url = "jdbc:mysql://localhost:3306/javadb";
@@ -131,19 +132,33 @@ public class SCMain {
 
         try {
             connection = DriverManager.getConnection(url, user, password);
-
             Statement statement;
             statement = connection.createStatement();
             ResultSet resultSet;
-            resultSet = statement.executeQuery(
-                    "select * from designation");
+            resultSet = statement.executeQuery("select * from chart");
+
+            /*
             int code;
             String title;
+
             // Arguments must be exact to javadb
             while (resultSet.next()) {
                 code = resultSet.getInt("code");
                 title = resultSet.getString("title").trim();
                 System.out.printf("%nCode : %s Title : %s", code, title);
+            }
+             */
+            // Variables represent fields in javadb
+            int code;
+            int total_rows;
+            int total_columns;
+
+            while (resultSet.next()) {
+                code = resultSet.getInt("code");
+                total_rows = resultSet.getInt("total_rows");
+                total_columns = resultSet.getInt("total_columns");
+                System.out.printf("%nCode : %s Rows : %s Columns : %s",
+                        code, total_rows, total_columns);
             }
 
             resultSet.close();
@@ -154,6 +169,5 @@ public class SCMain {
             System.out.println(e);
             e.printStackTrace();
         }
-
     }
 }

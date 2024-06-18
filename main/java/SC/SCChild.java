@@ -1,8 +1,8 @@
 /**
  * Used to keep track of assigned and unassigned seats
  *
- * @author Gregory Ross McTaggart
- * @version June 12, 2024
+ * @author GRM
+ * @version June 18, 2024
  */
 package SC;
 
@@ -14,6 +14,7 @@ public class SCChild {
 
     public int numRows;
     public int numColumns;
+    // javadb db = new javadb();
 
     ArrayList<String> storedNames = new ArrayList<String>(); // Stores names for input into chart
     String[][] names; // Array for storing name location
