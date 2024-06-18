@@ -1,7 +1,7 @@
 /**
  * Program to make a seating chart and add names
  *
- * @author GRM
+ * @author Gregory Ross McTaggart
  * @version June 18, 2024
  */
 package SC;
